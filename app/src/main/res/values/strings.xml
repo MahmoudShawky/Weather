@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Open Weather</string>
+    <string name="msg_no_internet">No Active internet connection!</string>
+</resources>
