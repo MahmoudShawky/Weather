@@ -45,17 +45,17 @@ data class WeatherModel(
 
     data class Main(
         @SerializedName("feels_like")
-        val feelsLike: Double,
+        val feelsLike: Float,
         @SerializedName("humidity")
-        val humidity: Int,
+        val humidity: Float,
         @SerializedName("pressure")
-        val pressure: Int,
+        val pressure: Float,
         @SerializedName("temp")
-        val temp: Int,
+        val temp: Float,
         @SerializedName("temp_max")
-        val tempMax: Int,
+        val tempMax: Float,
         @SerializedName("temp_min")
-        val tempMin: Int
+        val tempMin: Float
     )
 
     data class Sys(
@@ -84,8 +84,8 @@ data class WeatherModel(
 
     data class Wind(
         @SerializedName("deg")
-        val deg: Int,
+        val deg: Float,
         @SerializedName("speed")
-        val speed: Double
+        val speed: Float
     )
 }

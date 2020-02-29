@@ -14,11 +14,13 @@ import com.shawky.openweather.data.remote.RemoteDataSource
 import com.shawky.openweather.data.remote.RemoteDataSourceImp
 import com.shawky.openweather.data.remote.WeatherApi
 import com.shawky.openweather.data.remote.WeatherInterceptor
+import com.shawky.openweather.ui.main.WeatherListViewModel
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -28,7 +30,7 @@ import java.util.concurrent.TimeUnit
 
 
 val viewModelModule = module {
-    //viewModel { LinkAccountViewModel(get()) }
+    viewModel { WeatherListViewModel(repository = get()) }
 }
 
 val repositoryModule = module {
@@ -109,7 +111,7 @@ val databaseModule = module {
 
 
     fun provideDao(database: WeatherDb): WeatherDAO {
-        return database.wetherDbTableDao()
+        return database.weatherDbTableDao()
     }
 
     single { provideDatabase(androidApplication()) }

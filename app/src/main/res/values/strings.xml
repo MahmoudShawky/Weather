@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Open Weather</string>
     <string name="msg_no_internet">No Active internet connection!</string>
+
+    <!-- Start of WeatherList-->
+    <string name="temperature">Temperature:</string>
+    <string name="date">Date:</string>
+    <string name="more_details">More Details</string>
+    <string name="server_error">Internal server error</string>
+    <string name="temp_celsius">%.1f °C</string>
+    <string name="temp_description">%s %.1f/%.1f °C</string>
+    <!-- End of WeatherList-->
 </resources>

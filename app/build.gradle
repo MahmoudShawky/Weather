@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.shawky.openweather"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -30,16 +30,16 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\"")
-            buildConfigField("String", "BASE_URL", "\"http://openweathermap.org/img/wn/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
+            buildConfigField("String", "IMG_BASE_URL", "\"https://openweathermap.org/img/wn/\"")
             buildConfigField("String", "API_KEY", "\"bd52a1b3e7c0c4353b9368adec04ca06\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         release {
             minifyEnabled false
-            buildConfigField("String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\"")
-            buildConfigField("String", "BASE_URL", "\"http://openweathermap.org/img/wn/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
+            buildConfigField("String", "IMG_BASE_URL", "\"https://openweathermap.org/img/wn/\"")
             buildConfigField("String", "API_KEY", "\"bd52a1b3e7c0c4353b9368adec04ca06\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -92,6 +92,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
     //Coroutines
@@ -120,7 +121,8 @@ dependencies {
 
     // Room components
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    //annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
     //scalable
