@@ -6,19 +6,19 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "WeatherTable")
 class WeatherEntity(
     @PrimaryKey
-    val dateTime: Int,
-    val country: String,
+    val dateTime: Long,
     val cityName: String,
+    val country: String,
     val weatherDescription: String,
     val icon: String,
     val timezone: Int,
-    val feelsLike: Double,
-    val humidity: Int,
-    val pressure: Int,
-    val temp: Int,
-    val tempMax: Int,
-    val tempMin: Int,
+    val feelsLike: Float,
+    val humidity: Float,
+    val pressure: Float,
+    val temp: Float,
+    val tempMax: Float,
+    val tempMin: Float,
     val sunrise: Int,
     val sunset: Int,
-    val windSpeed: Double
+    val windSpeed: Float
 )

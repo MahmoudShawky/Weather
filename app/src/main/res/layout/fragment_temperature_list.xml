@@ -13,7 +13,7 @@
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:minHeight="@dimen/_200sdp"
         app:cardBackgroundColor="@color/material_blue"
         app:cardCornerRadius="@dimen/_15sdp"
@@ -39,7 +39,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_17ssp"
                 app:drawableStartCompat="@drawable/ic_place_white_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
+                app:layout_constraintGuide_percent="0.5" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTemp"
@@ -78,23 +78,36 @@
                 tools:text="Sunny" />
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnRefresh"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:iconSize="@dimen/_40sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_refresh" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btnSaveWeather"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_save_white_24dp"
                 app:iconSize="@dimen/_40sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:srcCompat="@drawable/ic_save_white_24dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivWeatherIcon"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@drawable/ic_shower_rain" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

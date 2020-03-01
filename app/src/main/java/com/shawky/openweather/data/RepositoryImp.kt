@@ -1,14 +1,16 @@
 package com.shawky.openweather.data
 
-import androidx.lifecycle.LiveData
-import com.shawky.openweather.data.local.database.dao.WeatherDAO
+import com.shawky.openweather.data.local.database.WeatherDb
 import com.shawky.openweather.data.local.database.dao.WeatherEntity
 import com.shawky.openweather.data.remote.RemoteDataSource
 import com.shawky.openweather.data.remote.models.WeatherModel
 import com.shawky.openweather.ui.base.BaseRepository
 import com.shawky.openweather.utils.UseCaseResult
 
-class RepositoryImp(private val remoteDataSource: RemoteDataSource, val weatherDAO: WeatherDAO) :
+class RepositoryImp(
+    private val remoteDataSource: RemoteDataSource,
+    private val weatherDb: WeatherDb
+) :
     Repository, BaseRepository() {
 
     override suspend fun getWeatherData(
@@ -17,12 +19,17 @@ class RepositoryImp(private val remoteDataSource: RemoteDataSource, val weatherD
     ): UseCaseResult<WeatherModel> =
         remoteDataSource.getWeatherData(cityName, units)
 
-    override fun insertWeatherModel(weather: WeatherEntity) = weatherDAO.insertWeatherModel(weather)
+    override suspend fun insertWeatherModel(weatherEntity: WeatherEntity) =
+        weatherDb.weatherDbTableDao().insertWeatherModel(weatherEntity)
 
-    override fun deleteWeatherModel(dateTime: Int) = weatherDAO.deleteWeatherModel(dateTime)
+    override suspend fun deleteWeatherModel(dateTime: Int) =
+        weatherDb.weatherDbTableDao().deleteWeatherModel(dateTime)
 
-    override fun deleteAllWeathers() = weatherDAO.deleteAllWeathers()
+    override suspend fun deleteAllWeathers() = weatherDb.weatherDbTableDao().deleteAllWeathers()
 
-    override fun loadAllWeathers(): LiveData<List<WeatherEntity>> = weatherDAO.loadAllWeathers()
+    override suspend fun loadAllWeathers(): UseCaseResult<List<WeatherEntity>> {
+        val weathers = weatherDb.weatherDbTableDao().loadAllWeathers()
+        return UseCaseResult.Success(weathers)
+    }
 
 }

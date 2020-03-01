@@ -1,6 +1,5 @@
 package com.shawky.openweather.data.local.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -19,5 +18,5 @@ interface WeatherDAO {
     fun deleteAllWeathers()
 
     @Query("select * from WeatherTable order by dateTime DESC")
-    fun loadAllWeathers(): LiveData<List<WeatherEntity>>
+    fun loadAllWeathers(): List<WeatherEntity>
 }

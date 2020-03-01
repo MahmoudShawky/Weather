@@ -35,7 +35,7 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<RemoteDataSource> { RemoteDataSourceImp(get()) }
-    single<Repository> { RepositoryImp(remoteDataSource = get(), weatherDAO = get()) }
+    single<Repository> { RepositoryImp(remoteDataSource = get(), weatherDb = get()) }
 }
 
 val appModule = module {

@@ -12,7 +12,7 @@ abstract class BaseViewModel : ViewModel() {
     private val _errorObserver = MutableLiveData<Failure>()
     val errorObserver: LiveData<Failure> get() = _errorObserver
 
-    val _networkState = MutableLiveData<NetworkState>()
+    internal val _networkState = MutableLiveData<NetworkState>()
     val networkState: LiveData<NetworkState>
         get() = _networkState
 
