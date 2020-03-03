@@ -51,17 +51,6 @@ class WeatherListFragment : BaseFragment<WeatherListViewModel>(WeatherListViewMo
         viewModel.savedWeathersList.observe(viewLifecycleOwner, Observer {
             if (it != null) savedWeatherAdapter.updateWeathers(it)
         })
-
-        viewModel.localState.observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Status.RUNNING -> pbLoading.visibility = View.VISIBLE
-                Status.SUCCESS -> pbLoading.visibility = View.GONE
-                Status.FAILED -> {
-                    pbLoading.visibility = View.GONE
-                    it.msg?.let { msg -> showError(msg) }
-                }
-            }
-        })
     }
 
     override fun initViews() {

@@ -22,14 +22,10 @@ class RepositoryImp(
     override suspend fun insertWeatherModel(weatherEntity: WeatherEntity) =
         weatherDb.weatherDbTableDao().insertWeatherModel(weatherEntity)
 
-    override suspend fun deleteWeatherModel(dateTime: Int) =
+    override fun deleteWeatherModel(dateTime: Int) =
         weatherDb.weatherDbTableDao().deleteWeatherModel(dateTime)
 
-    override suspend fun deleteAllWeathers() = weatherDb.weatherDbTableDao().deleteAllWeathers()
+    override fun deleteAllWeathers() = weatherDb.weatherDbTableDao().deleteAllWeathers()
 
-    override suspend fun loadAllWeathers(): UseCaseResult<List<WeatherEntity>> {
-        val weathers = weatherDb.weatherDbTableDao().loadAllWeathers()
-        return UseCaseResult.Success(weathers)
-    }
-
+    override fun loadAllWeathers() = weatherDb.weatherDbTableDao().loadAllWeathers()
 }

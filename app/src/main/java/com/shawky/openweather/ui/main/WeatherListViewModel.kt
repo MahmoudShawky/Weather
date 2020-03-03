@@ -15,35 +15,25 @@ import kotlinx.coroutines.launch
 
 class WeatherListViewModel(private val repository: Repository) : BaseViewModel() {
 
+    var savedWeathersList = repository.loadAllWeathers()
+
     private var _weather = MutableLiveData<WeatherModel>()
     val weather: LiveData<WeatherModel>
         get() = _weather
 
-    private var _savedWeathersList = MutableLiveData<List<WeatherEntity>>()
-    val savedWeathersList: LiveData<List<WeatherEntity>>
-        get() = _savedWeathersList
-
-    private val _localState = MutableLiveData<NetworkState>()
-    val localState: LiveData<NetworkState>
-        get() = _localState
-
     init {
         getCurrentWeather()
-        getSavedWeathers()
     }
 
     fun getCurrentWeather() {
         _networkState.postValue(NetworkState.LOADING)
         viewModelScope.launch(handler) {
-            val result = repository.getWeatherData(CURRENT_CITY, TEMPERATURE_UNIT)
-            when (result) {
+            when (val result = repository.getWeatherData(CURRENT_CITY, TEMPERATURE_UNIT)) {
                 is UseCaseResult.Success -> {
                     _networkState.postValue(NetworkState.LOADED)
                     _weather.postValue(result.data)
                 }
-                is UseCaseResult.Error -> {
-                    _networkState.postValue(NetworkState.error(result.exception.message))
-                }
+                is UseCaseResult.Error -> _networkState.postValue(NetworkState.error(result.exception.message))
             }
         }
     }
@@ -71,25 +61,6 @@ class WeatherListViewModel(private val repository: Repository) : BaseViewModel()
 
         viewModelScope.launch {
             weatherEntity?.let { repository.insertWeatherModel(it) }
-            getSavedWeathers()
-        }
-
-    }
-
-    fun getSavedWeathers() {
-        _localState.value = NetworkState.LOADING
-        viewModelScope.launch {
-            val result = repository.loadAllWeathers()
-            when (result) {
-                is UseCaseResult.Success -> {
-                    _localState.value = NetworkState.LOADED
-                    _savedWeathersList.postValue(result.data)
-                }
-                is UseCaseResult.Error -> {
-                    _localState.value = NetworkState.error("Error loading saved weathers!")
-                }
-            }
-
         }
 
     }

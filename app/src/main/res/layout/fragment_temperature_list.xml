@@ -114,24 +114,10 @@
 
     </androidx.cardview.widget.CardView>
 
-    <FrameLayout
-        android:id="@+id/listLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSavedTemp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSavedTemp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_saved_weather" />
-
-        <ProgressBar
-            android:id="@+id/pbLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="visible"
-            tools:visibility="visible" />
-    </FrameLayout>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_saved_weather" />
 
 </LinearLayout>
