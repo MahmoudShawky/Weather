@@ -61,11 +61,11 @@ class SavedWeathersAdapter :
                 holder.itemView.parentLayout,
                 "parent_${weatherEntity.dateTime}"
             )
-            ViewCompat.setTransitionName(
+/*            ViewCompat.setTransitionName(
                 holder.itemView.tvTemperature,
                 "temp_${weatherEntity.dateTime}"
             )
-            ViewCompat.setTransitionName(holder.itemView.ivIcon, "icon_${weatherEntity.dateTime}")
+            ViewCompat.setTransitionName(holder.itemView.ivIcon, "icon_${weatherEntity.dateTime}")*/
 
             holder.itemView.setOnClickListener {
                 itemClickListener?.onItemClickListener(

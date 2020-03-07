@@ -18,9 +18,9 @@ interface WeatherDAO {
     @Query("DELETE FROM WeatherTable")
     fun deleteAllWeathers()
 
-    @Query("select * from WeatherTable order by dateTime DESC")
-    fun loadAllWeathers(): LiveData<List<WeatherEntity>>
+    @Query("select * from WeatherTable WHERE cityName = :city order by dateTime DESC")
+    fun loadAllWeathers(city: String): LiveData<List<WeatherEntity>>
 
-    @Query("select * from WeatherTable where dateTime = :dateTime and cityName = :city ")
+    @Query("select * from WeatherTable WHERE dateTime = :dateTime and cityName = :city ")
     fun getWeather(dateTime: Long, city: String): LiveData<WeatherEntity>
 }

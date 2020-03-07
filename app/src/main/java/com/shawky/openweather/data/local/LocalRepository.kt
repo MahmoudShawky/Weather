@@ -7,6 +7,6 @@ interface LocalRepository {
     suspend fun insertWeatherModel(weatherEntity: WeatherEntity)
     fun deleteWeatherModel(dateTime: Int)
     fun deleteAllWeathers()
-    fun loadAllWeathers(): LiveData<List<WeatherEntity>>
+    fun loadAllWeathers(city: String): LiveData<List<WeatherEntity>>
     fun getWeather(dateTime: Long, city: String): LiveData<WeatherEntity>
 }

@@ -45,8 +45,8 @@ class DetailsFragment : BaseFragment<DetailsViewModel>(DetailsViewModel::class) 
         super.onViewCreated(view, savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ViewCompat.setTransitionName(parentLayout, "parent_${safeArgs.dataTime}")
-            ViewCompat.setTransitionName(tvTemperature, "temp_${safeArgs.dataTime}")
-            ViewCompat.setTransitionName(ivIcon, "icon_${safeArgs.dataTime}")
+            //ViewCompat.setTransitionName(tvTemperature, "temp_${safeArgs.dataTime}")
+            //ViewCompat.setTransitionName(ivIcon, "icon_${safeArgs.dataTime}")
         }
     }
 

@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class WeatherListViewModel(private val repository: Repository) : BaseViewModel() {
 
-    var savedWeathersList = repository.loadAllWeathers()
+    var savedWeathersList = repository.loadAllWeathers(CURRENT_CITY)
 
     private var _weather = MutableLiveData<WeatherModel>()
     val weather: LiveData<WeatherModel>

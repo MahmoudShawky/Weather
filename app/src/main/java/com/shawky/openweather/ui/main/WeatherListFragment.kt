@@ -93,9 +93,9 @@ class WeatherListFragment : BaseFragment<WeatherListViewModel>(WeatherListViewMo
                         tempTextView: TextView
                     ) {
                         val extras = FragmentNavigatorExtras(
-                            cardView to "parent_${item.dateTime}",
+                            cardView to "parent_${item.dateTime}"/*,
                             imageView to "icon_${item.dateTime}",
-                            tempTextView to "temp_${item.dateTime}"
+                            tempTextView to "temp_${item.dateTime}"*/
                         )
                         val action =
                             WeatherListFragmentDirections.actionWeatherListFragmentToDetailsFragment(

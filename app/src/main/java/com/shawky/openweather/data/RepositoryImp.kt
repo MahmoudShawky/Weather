@@ -27,7 +27,7 @@ class RepositoryImp(
 
     override fun deleteAllWeathers() = weatherDb.weatherDbTableDao().deleteAllWeathers()
 
-    override fun loadAllWeathers() = weatherDb.weatherDbTableDao().loadAllWeathers()
+    override fun loadAllWeathers(city: String) = weatherDb.weatherDbTableDao().loadAllWeathers(city)
 
     override fun getWeather(dateTime: Long, city: String) =
         weatherDb.weatherDbTableDao().getWeather(dateTime, city)

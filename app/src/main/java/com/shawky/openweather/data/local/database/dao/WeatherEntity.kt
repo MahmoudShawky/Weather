@@ -1,11 +1,9 @@
 package com.shawky.openweather.data.local.database.dao
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "WeatherTable")
+@Entity(tableName = "WeatherTable", primaryKeys = ["dateTime", "cityName"])
 class WeatherEntity(
-    @PrimaryKey
     val dateTime: Long,
     val cityName: String,
     val country: String,
