@@ -3,7 +3,6 @@ package com.shawky.openweather.di
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.bumptech.glide.Glide
 import com.google.gson.GsonBuilder
 import com.shawky.openweather.BuildConfig
 import com.shawky.openweather.data.Repository
@@ -14,6 +13,7 @@ import com.shawky.openweather.data.remote.RemoteDataSource
 import com.shawky.openweather.data.remote.RemoteDataSourceImp
 import com.shawky.openweather.data.remote.WeatherApi
 import com.shawky.openweather.data.remote.WeatherInterceptor
+import com.shawky.openweather.ui.details.DetailsViewModel
 import com.shawky.openweather.ui.main.WeatherListViewModel
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -31,15 +31,12 @@ import java.util.concurrent.TimeUnit
 
 val viewModelModule = module {
     viewModel { WeatherListViewModel(repository = get()) }
+    viewModel { DetailsViewModel(repository = get()) }
 }
 
 val repositoryModule = module {
     single<RemoteDataSource> { RemoteDataSourceImp(get()) }
     single<Repository> { RepositoryImp(remoteDataSource = get(), weatherDb = get()) }
-}
-
-val appModule = module {
-    single { Glide.with(androidContext()) }
 }
 
 val apiModule = module {

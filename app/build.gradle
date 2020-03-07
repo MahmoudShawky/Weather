@@ -14,6 +14,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -67,6 +68,10 @@ android {
         exclude("META-INF/*.kotlin_module")
     }
 
+/*    dataBinding {
+        enabled = true
+    }*/
+
 }
 
 dependencies {
@@ -78,9 +83,12 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation "androidx.preference:preference-ktx:1.1.0"
+    implementation "androidx.multidex:multidex:$multidex_version"
 
     //Navigation Architecture Component
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //lifecycle
@@ -88,13 +96,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment:2.2.1'
-    implementation 'androidx.navigation:navigation-ui:2.2.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
     //Coroutines
@@ -109,9 +111,7 @@ dependencies {
     //okhttp
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    kapt 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation("io.coil-kt:coil:0.9.5")
 
     // Kotlinx Serialization
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1'
@@ -132,6 +132,10 @@ dependencies {
     implementation "com.intuit.sdp:sdp-android:$sdp_Version"
 
     implementation("com.louiscad.splitties:splitties-activities:$splitties_version")
+
+    //RxAnimation
+    implementation 'com.mikhaellopez:rxanimation:1.0.0'
+    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
 
     //Testing
     testImplementation 'junit:junit:4.13'

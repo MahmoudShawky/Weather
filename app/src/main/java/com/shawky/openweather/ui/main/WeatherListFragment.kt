@@ -1,19 +1,26 @@
 package com.shawky.openweather.ui.main
 
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.RequestManager
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import coil.api.load
 import com.shawky.openweather.BuildConfig
 import com.shawky.openweather.R
+import com.shawky.openweather.data.local.database.dao.WeatherEntity
+import com.shawky.openweather.data.remote.models.WeatherModel
 import com.shawky.openweather.ui.base.BaseFragment
+import com.shawky.openweather.utils.Constants
 import com.shawky.openweather.utils.Status
 import kotlinx.android.synthetic.main.fragment_temperature_list.*
-import org.koin.android.ext.android.inject
+import kotlinx.android.synthetic.main.view_current_weather.*
 
 class WeatherListFragment : BaseFragment<WeatherListViewModel>(WeatherListViewModel::class) {
 
-    private val glide: RequestManager by inject()
     private val savedWeatherAdapter: SavedWeathersAdapter by lazy {
         SavedWeathersAdapter()
     }
@@ -24,17 +31,7 @@ class WeatherListFragment : BaseFragment<WeatherListViewModel>(WeatherListViewMo
     override fun initObservers() {
         viewModel.weather.observe(viewLifecycleOwner, Observer {
             val currentWeather = it ?: return@Observer
-            tvTemp.text = getString(R.string.temp_celsius, currentWeather.main.temp)
-            tvTempDescription.text = getString(
-                R.string.temp_description,
-                currentWeather.weather[0].description,
-                currentWeather.main.tempMin,
-                currentWeather.main.tempMax
-            )
-            tvLocation.text = currentWeather.name
-
-            glide.load("${BuildConfig.IMG_BASE_URL}/${currentWeather.weather[0].icon}@2x.png")
-                .into(ivWeatherIcon)
+            setCurrentWeatherData(currentWeather)
         })
 
         viewModel.networkState.observe(viewLifecycleOwner, Observer {
@@ -53,21 +50,68 @@ class WeatherListFragment : BaseFragment<WeatherListViewModel>(WeatherListViewMo
         })
     }
 
+    private fun setCurrentWeatherData(currentWeather: WeatherModel) {
+        parentLayout.setCardBackgroundColor(Constants.getColor(currentWeather.dt))
+        tvTemp.text = getString(R.string.temp_celsius, currentWeather.main.temp)
+        tvTempDescription.text = getString(
+            R.string.temp_description,
+            currentWeather.weather[0].description,
+            currentWeather.main.tempMin,
+            currentWeather.main.tempMax
+        )
+        tvLocation.text =
+            getString(R.string.location, currentWeather.name, currentWeather.sys.country)
+
+        ivWeatherIcon.load("${BuildConfig.IMG_BASE_URL}/${currentWeather.weather[0].icon}@2x.png")
+
+    }
+
     override fun initViews() {
+        btnRefresh.visibility = View.VISIBLE
         btnRefresh.setOnClickListener {
             viewModel.getCurrentWeather()
         }
 
+        btnSaveWeather.visibility = View.VISIBLE
         btnSaveWeather.setOnClickListener {
             viewModel.saveCurrentWeather()
         }
 
         rvSavedTemp.apply {
-            layoutManager = LinearLayoutManager(activity)
-            savedWeatherAdapter.itemClickListener = {
-                //show details
-            }
+
+            layoutManager = StaggeredGridLayoutManager(
+                3,
+                StaggeredGridLayoutManager.VERTICAL
+            )//LinearLayoutManager(activity)
+
+            savedWeatherAdapter.itemClickListener =
+                object : SavedWeathersAdapter.ItemClickListener {
+                    override fun onItemClickListener(
+                        item: WeatherEntity,
+                        cardView: CardView,
+                        imageView: ImageView,
+                        tempTextView: TextView
+                    ) {
+                        val extras = FragmentNavigatorExtras(
+                            cardView to "parent_${item.dateTime}",
+                            imageView to "icon_${item.dateTime}",
+                            tempTextView to "temp_${item.dateTime}"
+                        )
+                        val action =
+                            WeatherListFragmentDirections.actionWeatherListFragmentToDetailsFragment(
+                                item.dateTime,
+                                item.cityName
+                            )
+                        findNavController().navigate(action, extras)
+                    }
+                }
+
             adapter = savedWeatherAdapter
+            postponeEnterTransition()
+            viewTreeObserver.addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
         }
     }
 

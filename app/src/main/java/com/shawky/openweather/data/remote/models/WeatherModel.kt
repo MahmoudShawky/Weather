@@ -47,9 +47,9 @@ data class WeatherModel(
         @SerializedName("feels_like")
         val feelsLike: Float,
         @SerializedName("humidity")
-        val humidity: Float,
+        val humidity: Int,
         @SerializedName("pressure")
-        val pressure: Float,
+        val pressure: Int,
         @SerializedName("temp")
         val temp: Float,
         @SerializedName("temp_max")
@@ -64,9 +64,9 @@ data class WeatherModel(
         @SerializedName("id")
         val id: Int,
         @SerializedName("sunrise")
-        val sunrise: Int,
+        val sunrise: Long,
         @SerializedName("sunset")
-        val sunset: Int,
+        val sunset: Long,
         @SerializedName("type")
         val type: Int
     )

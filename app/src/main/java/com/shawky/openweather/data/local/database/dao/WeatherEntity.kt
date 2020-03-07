@@ -13,12 +13,12 @@ class WeatherEntity(
     val icon: String,
     val timezone: Int,
     val feelsLike: Float,
-    val humidity: Float,
-    val pressure: Float,
+    val humidity: Int,
+    val pressure: Int,
     val temp: Float,
     val tempMax: Float,
     val tempMin: Float,
-    val sunrise: Int,
-    val sunset: Int,
+    val sunrise: Long,
+    val sunset: Long,
     val windSpeed: Float
 )

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="@dimen/_15sdp"
+    tools:context=".ui.details.DetailsFragment">
+
+    <include
+        layout="@layout/item_saved_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_15sdp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp">
+
+        <TableRow android:background="@color/colorGray">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/locationTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLocation"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                tools:text="Cairo, Egypt" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/tempDescription" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTempDescription"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="Sunny" />
+        </TableRow>
+
+        <TableRow android:background="@color/colorGray">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/wind" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvWind"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="5.1 m/s" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/pressure" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPressure"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="5.1 m/s" />
+        </TableRow>
+
+        <TableRow android:background="@color/colorGray">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/humidity" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHumidity"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="5.1 m/s" />
+        </TableRow>
+
+        <TableRow>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/sunrise" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSunrise"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="5.1 m/s" />
+        </TableRow>
+
+        <TableRow android:background="@color/colorGray">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/sunset" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSunset"
+                style="@style/TextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                tools:text="5.1 m/s" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

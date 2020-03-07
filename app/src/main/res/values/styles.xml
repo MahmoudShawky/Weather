@@ -17,4 +17,14 @@
         <item name="android:minWidth">@dimen/_40sdp</item>
         <item name="android:minHeight">@dimen/_40sdp</item>
     </style>
+
+    <style name="TextAppearance.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+    </style>
 </resources>

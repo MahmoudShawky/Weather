@@ -8,4 +8,5 @@ interface LocalRepository {
     fun deleteWeatherModel(dateTime: Int)
     fun deleteAllWeathers()
     fun loadAllWeathers(): LiveData<List<WeatherEntity>>
+    fun getWeather(dateTime: Long, city: String): LiveData<WeatherEntity>
 }

@@ -5,4 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="material_blue">#8879FF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#F9F9F9</color>
+
+    <color name="mainTextColor">#130E51</color>
 </resources>

@@ -20,4 +20,7 @@ interface WeatherDAO {
 
     @Query("select * from WeatherTable order by dateTime DESC")
     fun loadAllWeathers(): LiveData<List<WeatherEntity>>
+
+    @Query("select * from WeatherTable where dateTime = :dateTime and cityName = :city ")
+    fun getWeather(dateTime: Long, city: String): LiveData<WeatherEntity>
 }

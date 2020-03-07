@@ -7,7 +7,24 @@
     <string name="date">Date:</string>
     <string name="more_details">More Details</string>
     <string name="server_error">Internal server error</string>
+    <string name="location">%s, %s</string>
     <string name="temp_celsius">%.1f °C</string>
     <string name="temp_description">%s %.1f/%.1f °C</string>
     <!-- End of WeatherList-->
+
+    <!-- Start of WeatherDetails-->
+    <string name="wind">Wind</string>
+    <string name="windValue">%.2f M/S</string>
+    <string name="pressure">Pressure</string>
+    <string name="pressureValue">%d HPA</string>
+    <string name="humidity">Humidity</string>
+    <string name="humidityValue">%d%%</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="cardTransitionName">cardTransitionName</string>
+    <string name="temperatureTransitionName">temperatureTransitionName</string>
+    <string name="iconTransitionName">iconTransitionName</string>
+    <string name="locationTitle">Location</string>
+    <string name="tempDescription">Description</string>
+    <!-- End of WeatherDetails-->
 </resources>
