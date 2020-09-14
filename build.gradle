@@ -4,21 +4,21 @@ buildscript {
 
     ext{
         minSdk = 21
-        targetSdk = 29
-        kotlin_version = '1.3.70'
+        targetSdk = 30
+        kotlin_version = '1.4.10'
 
-        nav_version = '2.3.0-alpha02'
-        retrofit_version = '2.7.0'
-        okhttp_version = '3.9.1'
+        nav_version = '2.3.0'
+        retrofit_version = '2.9.0'
+        okhttp_version = '4.8.1'
         multidex_version = "2.0.1"
 
         glide_version = "4.8.0"
 
         ktx_version = "1.2.0-alpha02"
         koin_version = "2.0.1"
-        coroutine_version = "1.3.3"
+        coroutine_version = "1.3.9"
         lifecycle_version = "2.2.0"
-        room_version = "2.2.4"
+        room_version = "2.2.5"
         //nav_version = "2.2.1'"
 
         //Scalable
@@ -36,7 +36,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         // NOTE: Do not place your application dependencies here; they belong
